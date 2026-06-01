@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calli Editorial – Books</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --ink: #1a1a2e;
+      --navy: #16213e;
+      --slate: #2d3561;
+      --accent: #e8a87c;
+      --accent-dark: #c47d4a;
+      --sustainable: #7a9080;
+      --paper: #f9f7f4;
+      --paper-warm: #f2ede6;
+      --text: #2a2a3a;
+      --text-mid: #5a5a72;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--paper);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--ink);
+      background-image:
+        radial-gradient(ellipse at 0% 0%, rgba(232,168,124,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(45,53,97,0.6) 0%, transparent 50%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e8a87c' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--slate), var(--accent), var(--slate));
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.8rem 2rem 2.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      color: #ffffff;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+
+    header h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .header-tagline {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    /* ── Thin deco bar ── */
+    .deco-bar {
+      background: var(--navy);
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      border-bottom: 2px solid rgba(232,168,124,0.4);
+      border-top: 1px solid rgba(232,168,124,0.15);
+    }
+
+    .deco-bar span {
+      color: var(--accent);
+      font-size: 0.6rem;
+      opacity: 0.8;
+    }
+
+    /* ── Category filter ── */
+    .category-bar {
+      background: var(--paper-warm);
+      border-bottom: 1px solid rgba(26,26,46,0.1);
+      padding: 0.9rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .cat-btn {
+      background: transparent;
+      border: 1px solid rgba(26,26,46,0.25);
+      color: var(--text-mid);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .cat-btn:hover, .cat-btn.active {
+      background: var(--ink);
+      color: var(--accent);
+      border-color: var(--ink);
+    }
+
+    .novenas-btn {
+      background: transparent;
+      border: 1px solid var(--sustainable);
+      color: var(--sustainable);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1.1rem;
+      border-radius: 20px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .novenas-btn:hover {
+      background: var(--sustainable);
+      color: white;
+    }
+
+    .cat-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(26,26,46,0.15);
+      margin: 0 0.3rem;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--ink);
+      margin: 2.5rem 0 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(122,144,128,0.5), transparent);
+    }
+
+    /* ── Book grid ── */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 2rem;
+    }
+
+    .book-card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.22s ease;
+    }
+
+    .book-card:hover { transform: translateY(-5px); }
+
+    .book-card:hover .book-cover-placeholder,
+    .book-card:hover img.book-cover {
+      box-shadow: 0 14px 35px rgba(26,26,46,0.22);
+    }
+
+    img.book-cover {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: 3px;
+      box-shadow: 4px 5px 16px rgba(0,0,0,0.15), -1px 0 0 rgba(0,0,0,0.06);
+      display: block;
+      transition: box-shadow 0.22s;
+    }
+
+    .book-cover-placeholder {
+      width: 100%;
+      aspect-ratio: 2/3;
+      background: linear-gradient(145deg, var(--slate) 0%, var(--ink) 100%);
+      border-radius: 3px;
+      box-shadow: 4px 5px 16px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem 0.8rem;
+      text-align: center;
+      transition: box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--sustainable), transparent);
+    }
+
+    .book-cover-placeholder .book-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+
+    .book-cover-placeholder .placeholder-title {
+      font-family: 'Playfair Display', serif;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.82rem;
+      line-height: 1.35;
+    }
+
+    .book-info {
+      margin-top: 0.65rem;
+      padding: 0 0.1rem;
+    }
+
+    .book-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.92rem;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .book-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+
+    .lang-flag { font-size: 0.85rem; line-height: 1; }
+
+    .amazon-tag {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--sustainable);
+      font-weight: 500;
+    }
+
+    .amazon-tag::after { content: ' →'; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-top: 1px solid rgba(232,168,124,0.2);
+    }
+
+    footer span { color: var(--accent); }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .book-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1.2rem; }
+      .header-inner { padding: 1.8rem 1.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-eyebrow">Independent Publisher</div>
+    <h1>Calli <em>Editorial</em></h1>
+    <div class="header-tagline">Books for every reader</div>
+  </div>
+</header>
+
+<div class="deco-bar">
+  <span>◆</span><span>◆</span><span>◆</span>
+</div>
+
+<div class="category-bar">
+  <button class="cat-btn active" onclick="filterBooks('all', this)">All</button>
+  <button class="cat-btn" onclick="filterBooks('prayer', this)">Prayer & Devotion</button>
+  <button class="cat-btn" onclick="filterBooks('santamuerte', this)">Santa Muerte</button>
+  <button class="cat-btn" onclick="filterBooks('magic', this)">Magic & Occult</button>
+  <button class="cat-btn" onclick="filterBooks('tarot', this)">Tarot & Divination</button>
+  <button class="cat-btn" onclick="filterBooks('power', this)">Mind & Power</button>
+  <button class="cat-btn" onclick="filterBooks('fiction', this)">Fiction</button>
+  <button class="cat-btn" onclick="filterBooks('health', this)">Health & Home</button>
+  <button class="cat-btn" onclick="filterBooks('arts', this)">Arts & Crafts</button>
+  <div class="cat-divider"></div>
+  <a href="https://solonovenas.com" target="_blank" class="novenas-btn">📿 Ver Novenas</a>
+</div>
+
+<main>
+
+  <h2 class="section-title" id="prayer">Prayer &amp; Devotion</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="prayer">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">🙏</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇺🇸</span>
+          <span class="amazon-tag">View on Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="santamuerte">Santa Muerte &amp; Santería</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="santamuerte">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">💀</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇪🇸</span>
+          <span class="amazon-tag">Ver en Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="magic">Magic &amp; Occult</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="magic">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">🕯️</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇺🇸</span>
+          <span class="amazon-tag">View on Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="tarot">Tarot &amp; Divination</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="tarot">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">🔮</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇺🇸</span>
+          <span class="amazon-tag">View on Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="power">Mind &amp; Power</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="power">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">⚡</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇺🇸</span>
+          <span class="amazon-tag">View on Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="fiction">Fiction</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="fiction">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">📖</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇪🇸</span>
+          <span class="amazon-tag">Ver en Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="health">Health &amp; Home</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="health">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">🌿</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇪🇸</span>
+          <span class="amazon-tag">Ver en Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <h2 class="section-title" id="arts">Arts &amp; Crafts</h2>
+  <div class="book-grid">
+    <!-- BOOK -->
+    <a class="book-card" href="YOUR-AMAZON-LINK" target="_blank" rel="noopener" data-category="arts">
+      <div class="book-cover-placeholder">
+        <div class="book-icon">🎨</div>
+        <div class="placeholder-title">Your Book Title</div>
+      </div>
+      <div class="book-info">
+        <div class="book-title">Your Book Title</div>
+        <div class="book-meta">
+          <span class="lang-flag">🇺🇸</span>
+          <span class="amazon-tag">View on Amazon</span>
+        </div>
+      </div>
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  © <span id="year"></span> <span>Calli Editorial</span> &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
+  <a href="https://solonovenas.com" target="_blank">📿 SoloNovenas.com</a>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function filterBooks(category, btn) {
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.book-card').forEach(card => {
+      if (category === 'all' || card.dataset.category === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('.section-title').forEach(title => {
+      const grid = title.nextElementSibling;
+      if (category === 'all') {
+        title.style.display = '';
+        grid.style.display = '';
+      } else {
+        const hasVisibleBooks = grid.querySelector(`.book-card[data-category="${category}"]`);
+        title.style.display = hasVisibleBooks ? '' : 'none';
+        grid.style.display = hasVisibleBooks ? '' : 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
