@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="color-scheme" content="light only"/>
   <title>Calli Editorial – Books</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     :root {
+      color-scheme: light only;
       --ink: #1a1a2e;
       --navy: #16213e;
       --slate: #2d3561;
@@ -214,7 +216,6 @@
 
     .book-card:hover { transform: translateY(-5px); }
 
-    .book-card:hover .book-cover-placeholder,
     .book-card:hover img.book-cover {
       box-shadow: 0 14px 35px rgba(26,26,46,0.22);
     }
@@ -227,44 +228,6 @@
       box-shadow: 4px 5px 16px rgba(0,0,0,0.15), -1px 0 0 rgba(0,0,0,0.06);
       display: block;
       transition: box-shadow 0.22s;
-    }
-
-    .book-cover-placeholder {
-      width: 100%;
-      aspect-ratio: 2/3;
-      background: linear-gradient(145deg, var(--slate) 0%, var(--ink) 100%);
-      border-radius: 3px;
-      box-shadow: 4px 5px 16px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem 0.8rem;
-      text-align: center;
-      transition: box-shadow 0.22s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .book-cover-placeholder::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--sustainable), transparent);
-    }
-
-    .book-cover-placeholder .book-icon {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      opacity: 0.7;
-    }
-
-    .book-cover-placeholder .placeholder-title {
-      font-family: 'Playfair Display', serif;
-      color: rgba(255,255,255,0.9);
-      font-size: 0.82rem;
-      line-height: 1.35;
     }
 
     .book-info {
@@ -338,14 +301,14 @@
 
 <div class="category-bar">
   <button class="cat-btn active" onclick="filterBooks('all', this)">All</button>
-  <button class="cat-btn" onclick="filterBooks('prayer', this)">Prayer & Devotion</button>
+  <button class="cat-btn" onclick="filterBooks('prayer', this)">Prayer &amp; Devotion</button>
   <button class="cat-btn" onclick="filterBooks('santamuerte', this)">Santa Muerte</button>
-  <button class="cat-btn" onclick="filterBooks('magic', this)">Magic & Occult</button>
-  <button class="cat-btn" onclick="filterBooks('tarot', this)">Tarot & Divination</button>
-  <button class="cat-btn" onclick="filterBooks('power', this)">Mind & Power</button>
+  <button class="cat-btn" onclick="filterBooks('magic', this)">Magic &amp; Occult</button>
+  <button class="cat-btn" onclick="filterBooks('tarot', this)">Tarot &amp; Divination</button>
+  <button class="cat-btn" onclick="filterBooks('power', this)">Mind &amp; Power</button>
   <button class="cat-btn" onclick="filterBooks('fiction', this)">Fiction</button>
-  <button class="cat-btn" onclick="filterBooks('health', this)">Health & Home</button>
-  <button class="cat-btn" onclick="filterBooks('arts', this)">Arts & Crafts</button>
+  <button class="cat-btn" onclick="filterBooks('health', this)">Health &amp; Home</button>
+  <button class="cat-btn" onclick="filterBooks('arts', this)">Arts &amp; Crafts</button>
   <div class="cat-divider"></div>
   <a href="https://solonovenas.com" target="_blank" class="novenas-btn">📿 Ver Novenas</a>
 </div>
@@ -355,239 +318,48 @@
   <h2 class="section-title" id="prayer">Prayer &amp; Devotion</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    <a class="book-card" href="https://www.amazon.com/dp/1625040768" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="77788.png" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Collection of Selected Prayers</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇺🇸</span>
-      <span class="amazon-tag">View on Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040776" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="1532.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Colección de Oraciones Escogidas</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625042051" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="Oraciones.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Oraciones Milagrosas a Dios, a la Santísima Virgen y a San Judas Tadeo</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040636" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="La-Fe.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">La Fe en la Oración</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625042256" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="Cdd.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">El Libro de Oraciones de las Cartas de Dios</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040679" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="1203.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Secretos de los Salmos</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040857" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="70025.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Secrets of the Psalms</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇺🇸</span>
-      <span class="amazon-tag">View on Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-
-<a class="book-card" href="https://www.amazon.com/dp/162504089X" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="73574.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">The Book of Psalms</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇺🇸</span>
-      <span class="amazon-tag">View on Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-
-<a class="book-card" href="https://www.amazon.com/dp/162504092X" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="10146.png" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Estudia y Colorea Pasajes de la Biblia</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040601" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="10105.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">The Magic Formula for Successful Prayer</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇺🇸</span>
-      <span class="amazon-tag">View on Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625040814" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="47-Rezos.jpg" class="47 Rezos"/>
-  <div class="book-info">
-    <div class="book-title">47 Rezos</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
-
-<a class="book-card" href="https://www.amazon.com/dp/1625041969" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src="14-santos.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Novenas a los 14 Santos Auxiliares</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-<a class="book-card" href="https://www.amazon.com/dp/1625041985" target="_blank" rel="noopener" data-category=“prayer”>
-  <img src=“1034.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Vida y Milagros de El Maximón</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
-
   </div>
 
   <h2 class="section-title" id="santamuerte">Santa Muerte &amp; Santería</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    
-    
   </div>
 
   <h2 class="section-title" id="magic">Magic &amp; Occult</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    
-    
   </div>
 
   <h2 class="section-title" id="tarot">Tarot &amp; Divination</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    
-    
   </div>
 
   <h2 class="section-title" id="power">Mind &amp; Power</h2>
   <div class="book-grid">
     <!-- BOOK -->
-   
-    
   </div>
 
   <h2 class="section-title" id="fiction">Fiction</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    
-    
   </div>
 
   <h2 class="section-title" id="health">Health &amp; Home</h2>
   <div class="book-grid">
     <!-- BOOK -->
-   
-    
   </div>
 
   <h2 class="section-title" id="arts">Arts &amp; Crafts</h2>
   <div class="book-grid">
     <!-- BOOK -->
-    <a class="book-card" href="https://www.amazon.com/dp/1625042345" target="_blank" rel="noopener" data-category=“arts”>
-  <img src="Drawing.png" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Drawing Made Easy</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇺🇸</span>
-      <span class="amazon-tag">View on Amazon</span>
-    </div>
-  </div>
-</a>
-
-<a class="book-card" href="https://www.amazon.com/dp/1625042353" target="_blank" rel="noopener" data-category=“arts”>
-  <img src="Dibujo.jpg" class="book-cover" alt="Book Title"/>
-  <div class="book-info">
-    <div class="book-title">Dibujo Fácil</div>
-    <div class="book-meta">
-      <span class="lang-flag">🇪🇸</span>
-      <span class="amazon-tag">Ver en Amazon</span>
-    </div>
-  </div>
-</a>
   </div>
 
 </main>
 
 <footer>
   © <span id="year"></span> <span>Calli Editorial</span> &nbsp;·&nbsp; All rights reserved &nbsp;·&nbsp;
-  <a href="https://solonovenas.com" target="_blank">📿 SoloNovenas.com</a> &nbsp;✦&nbsp; Contacto: faxdecalli @gmail.com
-</footer>
+  <a href="https://solonovenas.com" target="_blank">📿 SoloNovenas.com</a>
 </footer>
 
 <script>
